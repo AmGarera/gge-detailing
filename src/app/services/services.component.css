@@ -1,0 +1,128 @@
+/**
+ * The container is in a Flex layout
+ * with a gap of 24px
+ */
+ .Pricing-Table {
+	--gap: 24px;
+	--nb-items: 3;
+	/* I used CSS Variables here to
+	 * facilitate the calculation
+	 * of width suggestion later.
+	 */
+
+	display: flex;
+	justify-content: center;
+	/* Make it wrap in case we have too many items */
+	flex-wrap: wrap;
+	gap: var(--gap);
+
+	/* Just design purpose */
+	/* width: 1040px; */
+	max-width: 100%;
+	padding: 32px;
+}
+
+/**
+ * Below a bit of magic to count
+ * the number of items.
+ * I stopped over 5 on purpose.
+ */
+.PT-Item:nth-last-child(4):first-child,
+.PT-Item:nth-last-child(4):first-child ~ .PT-Item {
+	--nb-items: 4;
+}
+
+.PT-Item:nth-last-child(5):first-child,
+.PT-Item:nth-last-child(5):first-child ~ .PT-Item {
+	--nb-items: 5;
+}
+
+/**
+ * Flex direction column to put our
+ * footer at the very bottom.
+ */
+.PT-Item {
+   /* Preparing for themed item */
+	--primary: #F34A4E;
+  outline: solid;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	/* Be careful with max-content value */
+	min-width: max-content;
+	background: white;
+	/* border-radius: 24px; */
+	overflow: hidden;
+	/**
+	 * The calc here is a way to keep thing out
+	 * of the wrapping behavior for a while.
+	 * Above 5 items it stops and go back
+	 * to --nb-items = 3
+	 */
+	flex-basis: calc( calc(100% - (var(--gap) * var(--nb-items)) )/var(--nb-items) );
+}
+
+.PT-Item.is-highlighted {
+	/* Preparing for highlighted item */
+	--primary: #1FA19C;
+	transform: scale(1.05);
+}
+
+/**
+ * Most of the rest is for
+ * decorative purpose.
+ */
+
+.PT-Item > * {
+	padding: 24px;
+}
+
+.PT-Item p,
+.PT-Item ul,
+.PT-Item h2 {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.PT-Heading {
+	text-align: center;
+	color: white;
+	background: var(--primary);
+}
+
+.PT-Feature {
+	font-size: .875em;
+	padding: 8px 0;
+	list-style: none;
+}
+
+.PT-Feature + .PT-Feature {
+	border-top: 1px solid #eee;
+}
+
+.PT-Footer {
+	padding-top: 0;
+	margin-top: auto;
+	text-align: center;
+}
+
+.PT-Price {
+	font-size: 2.5rem;
+	color: var(--primary);
+}
+
+.PT-Price small {
+	margin: 0 -.25em;
+	font-size: 1rem;
+	color: #777;
+}
+
+.PT-Trial {
+	font-size: .75em;
+	color: #777;
+}
+
+.PT-CTA {
+  padding-top: 2rem;
+}
+
