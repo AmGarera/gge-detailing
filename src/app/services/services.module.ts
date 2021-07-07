@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { JobFormComponent } from '../job-form/job-form.component';
 import { MaterialModule } from '../material/material.module';
@@ -16,6 +17,7 @@ import { ServicesComponent } from './services.component';
   imports: [
     CommonModule,
     MaterialModule,
+    FlexLayoutModule,
     ReactiveFormsModule,
     ServicesRoutingModule,
   ]
