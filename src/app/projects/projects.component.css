@@ -1,0 +1,8 @@
+.showcase {
+  display: flex;
+  padding: 2rem;
+}
+
+.example-card {
+  max-width: 400px;
+}
